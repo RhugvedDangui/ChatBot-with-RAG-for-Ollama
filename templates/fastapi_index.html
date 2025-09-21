@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot - Powered by Ollama</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="session_styles.css">
+    <title>AI Chatbot - Powered by Gemini</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/session_styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="header-text">
                     <h1>AI Assistant</h1>
-                    <p>Powered by Ollama & LangChain</p>
+                    <p>Powered by Google Gemini</p>
                     <span id="session-info" class="session-info"></span>
                 </div>
                 <div class="header-actions">
@@ -36,7 +36,7 @@
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="message-content">
-                        <p>Hello! I'm your AI assistant powered by Ollama. How can I help you today?</p>
+                        <p>Hello! I'm your AI assistant powered by Google Gemini. How can I help you today?</p>
                         <span class="message-time" id="welcomeTime"></span>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="input-footer">
                 <span class="char-count" id="charCount">0/2000</span>
-                <span class="powered-by">Powered by Ollama & LangChain</span>
+                <span class="powered-by">Powered by Google Gemini AI</span>
             </div>
         </footer>
     </div>
@@ -89,8 +89,8 @@
     </div>
 
     <!-- Load session_utils.js first -->
-    <script src="session_utils.js"></script>
+    <script src="/static/session_utils.js"></script>
     <!-- Then load script.js which depends on functions from session_utils.js -->
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

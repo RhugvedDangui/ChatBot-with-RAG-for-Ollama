@@ -1,6 +1,6 @@
 # AI Chatbot with RAG and Session Management
 
-A modern, responsive chatbot application powered by Google's Gemini AI API, built with Flask backend and vanilla JavaScript frontend, featuring document RAG (Retrieval Augmented Generation) and persistent sessions.
+A modern, responsive chatbot application powered by Google's Gemini AI API, available with both Flask and FastAPI backends, featuring document RAG (Retrieval Augmented Generation) and persistent sessions.
 
 ## Features
 
@@ -16,12 +16,13 @@ A modern, responsive chatbot application powered by Google's Gemini AI API, buil
 ## Technologies Used
 
 ### Backend
-- **Flask** - Python web framework
+- **FastAPI/Flask** - Python web frameworks (two implementations available)
 - **Google Generative AI** - Gemini API integration
 - **Chroma DB** - Vector database for document and conversation storage
 - **Ollama** - Local embeddings with mxbai-embed-large model
 - **LangChain** - Framework for RAG implementation
-- **Flask-CORS** - Cross-origin resource sharing
+- **CORS Middleware** - Cross-origin resource sharing
+- **Pydantic** - Data validation with FastAPI
 - **python-dotenv** - Environment variable management
 
 ### Frontend
@@ -43,8 +44,15 @@ A modern, responsive chatbot application powered by Google's Gemini AI API, buil
 1. **Clone or download the project files**
 
 2. **Install Python dependencies**
+   
+   For Flask implementation:
    ```bash
    pip install -r requirements.txt
+   ```
+   
+   For FastAPI implementation:
+   ```bash
+   pip install -r requirements_fastapi.txt
    ```
 
 3. **Get your Gemini API key**
@@ -68,8 +76,15 @@ A modern, responsive chatbot application powered by Google's Gemini AI API, buil
    ```
 
 6. **Run the application**
+   
+   Flask version:
    ```bash
    python app.py
+   ```
+   
+   FastAPI version:
+   ```bash
+   python -m uvicorn fastapi_app:app --reload
    ```
 
 7. **Open your browser**
@@ -81,12 +96,14 @@ A modern, responsive chatbot application powered by Google's Gemini AI API, buil
 ```
 project_root/
 │
-├── app.py                  # Main Flask application
+├── app.py                  # Flask application
+├── fastapi_app.py          # FastAPI application
 ├── embedding_utils.py      # Utility functions for embeddings
 ├── migrate_db.py           # Database migration script
 ├── rag_store.py            # Simple RAG implementation
 ├── session_rag.py          # Session-based RAG implementation
-├── requirements.txt        # Python dependencies
+├── requirements.txt        # Python dependencies for Flask
+├── requirements_fastapi.txt # Python dependencies for FastAPI
 ├── .env                    # Environment variables (create this)
 ├── README.md               # Project documentation
 │
@@ -170,15 +187,16 @@ project_root/
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `GEMINI_API_KEY` | Your Google Gemini API key | Required |
-| `FLASK_DEBUG` | Enable Flask debug mode | `False` |
+| `FLASK_DEBUG` | Enable debug mode (Flask) | `False` |
 | `PORT` | Server port number | `5000` |
-| `SECRET_KEY` | Flask secret key | Required |
+| `SECRET_KEY` | Secret key for Flask | For Flask only |
 
 ### Customization
 
-- **Modify the AI behavior**: Edit the prompt in `app.py` at line 45
+- **Modify the AI behavior**: Edit the prompt in the chat endpoint (Flask: `app.py`, FastAPI: `fastapi_app.py`)
 - **Change the UI theme**: Update CSS variables in `style.css`
-- **Add new features**: Extend the Flask routes and JavaScript functions
+- **Add new features**: Extend the API routes and JavaScript functions
+- **API documentation**: With FastAPI, access built-in interactive docs at `/docs` or `/redoc`
 
 ## Features in Detail
 
